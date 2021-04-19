@@ -1,3 +1,8 @@
+Backups/*
+!Backups/README.md
+# Vim
+*~
+# PYTHON GENERIC
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
