@@ -15,6 +15,9 @@ class ConfigHandler:
         backupParentDir = self.config['backupParentDir']
         return f"{backupParentDir}/{uid}/"
 
+    def getBackupParent(self):
+        return self.config['backupParentDir']
+
     def getConfig(self):
         return self.config
 

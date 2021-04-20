@@ -5,20 +5,14 @@ from flask import Flask, request
 
 ch = configHandler.ConfigHandler()
 
-backupDir = ch.getBackupDir(2021041901)
-sourceDirs = ch.getSourceDirs()
-backupCmds = ch.getBackupCmds()
-
 app = Flask(__name__)
-
-bh.execBackup(backupDir, sourceDirs, backupCmds);
 
 """
 TODO
  x Get/Set(PUT) Configs
- - start backup
- - get current disk usage
- - get backups dir size
+ x start backup
+ x get current disk usage
+ x get backups dir size
  - purge old
  - sync backup folder (source -> destination)
 """
@@ -31,3 +25,14 @@ def config():
         return {'success':True}
     elif request.method == 'GET':
         return ch.getConfig()
+
+@app.route('/backup/start', methods=['POST'])
+def backupStart():
+    data = request.get_json()
+    bh.execBackup(ch.getBackupDir(data["uid"]), ch.getSourceDirs(), ch.getBackupCmds())
+    return {'success':True}
+
+@app.route('/backup/usage', methods=['GET'])
+def getUsage():
+    parentDir = ch.getBackupParent()
+    return bh.getDiskUsage(parentDir)
