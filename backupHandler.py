@@ -32,3 +32,6 @@ def purgeOld(date,parentDir):
                 rmtree(path)
         except:
             pass
+
+def syncBackup(dest, parentDir):
+    subprocess.run(['rsync', '-r', parentDir, dest])

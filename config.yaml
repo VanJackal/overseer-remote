@@ -1,6 +1,6 @@
 backupCmds:
 - mongodump -o {backupDir}mongodump
-backupParentDir: ./Backups/
 sourceDirs:
-- /home/jackal/Projects/Overseer/sampleData/
-test: yeet
+- ~/Projects/Overseer/sampleData/
+backupParentDir: ./Backups/
+sid: localhost

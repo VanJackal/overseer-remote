@@ -14,7 +14,7 @@ TODO
  x get current disk usage
  x get backups dir size
  x purge old
- - sync backup folder (source -> destination)
+ x sync backup folder (source -> destination)
 """
 
 @app.route('/config', methods = ['PUT', 'GET'])
@@ -36,3 +36,9 @@ def backupStart():
 def getUsage():
     parentDir = ch.getBackupParent()
     return bh.getDiskUsage(parentDir)
+
+@app.route('/backup/sync', methods=['POST'])
+def syncBackups():
+    data = request.get_json()
+    bh.syncBackup(data['dest'], ch.getBackupParent())
+    return {'success':True}
