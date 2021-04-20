@@ -1,0 +1,12 @@
+[Unit]
+Description=Overseer remote service
+After=network.target
+
+[Service]
+User=overseer
+WorkingDirectory=/home/overseer/Projects/Overseer/overseer-remote
+ExecStart=/bin/gunicorn --chdir /home/overseer/Projects/Overseer/overseer-remote/ -b localhost:5000 overseerRemote:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
