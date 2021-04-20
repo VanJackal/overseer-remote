@@ -1,7 +1,9 @@
 #!/bin/python
 import backupHandler as bh
-import configHandler as ch
+import configHandler
 from flask import Flask, request
+
+ch = configHandler.ConfigHandler()
 
 backupDir = ch.getBackupDir(2021041901)
 sourceDirs = ch.getSourceDirs()
@@ -13,7 +15,7 @@ bh.execBackup(backupDir, sourceDirs, backupCmds);
 
 """
 TODO
- - Get/Set(PUT) Configs
+ x Get/Set(PUT) Configs
  - start backup
  - get current disk usage
  - get backups dir size
