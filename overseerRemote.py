@@ -13,7 +13,7 @@ TODO
  x start backup
  x get current disk usage
  x get backups dir size
- - purge old
+ x purge old
  - sync backup folder (source -> destination)
 """
 

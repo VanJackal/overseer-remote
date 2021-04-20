@@ -1,5 +1,5 @@
 import os
-from shutil import copytree, disk_usage
+from shutil import copytree, disk_usage, rmtree
 import subprocess
 import re
 
@@ -22,3 +22,13 @@ def getDiskUsage(backupParentDir):
     q = re.compile(r"(\d+)(?:.*$)")
     usage['backups'] = int(q.search(str(currentUsage)).group(1))
     return usage
+
+def purgeOld(date,parentDir):
+    files = os.listdir(parentDir)
+    for file in files:
+        try:
+            if int(file[:-2]) < date:
+                path = f"{parentDir}{file}"
+                rmtree(path)
+        except:
+            pass
