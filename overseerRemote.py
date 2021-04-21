@@ -44,3 +44,12 @@ def syncBackups():
     data = request.get_json()
     bh.syncBackup(data['dest'], ch.getBackupParent())
     return {'success':True}
+
+@app.route('/backup/purge', methods=['POST'])
+def purge():
+    """
+    purges backups older than a given date (YYYYMMDD)
+    """
+    data = request.get_json()
+    bh.purgeOld(data['date'],ch.getBackupParent())
+    return {'success':True}
