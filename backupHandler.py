@@ -42,7 +42,7 @@ def getDiskUsage(backupParentDir):
     backupParentDir - parent dir of all backups
     """
     usage = disk_usage(backupParentDir)._asdict()
-    currentUsage = subprocess.run(['du', '-s', backupParentDir], capture_output = True).stdout
+    currentUsage = subprocess.run(['du', '-s', backupParentDir], stdout = subprocess.PIPE).stdout
     q = re.compile(r"(\d+)(?:.*$)")
     usage['backups'] = int(q.search(str(currentUsage)).group(1))
     return usage
