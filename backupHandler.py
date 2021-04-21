@@ -22,7 +22,8 @@ def backupDirs(backupDir, sourceDirs):
     sourceDirs - list of directories to back up
     """
     for directory in sourceDirs:
-        copytree(directory,backupDir,dirs_exist_ok=True)
+        #copytree(directory,backupDir,dirs_exist_ok=True)
+        subprocess.run(["cp", '-r', directory, backupDir])
 
 def execBackupCmds(backupDir, backupCmds):
     """
