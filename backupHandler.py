@@ -21,9 +21,10 @@ def backupDirs(backupDir, sourceDirs):
     backupDir - full backup path
     sourceDirs - list of directories to back up
     """
+    subprocess.run(f"mkdir -p {backupDir}".split(" "))
     for directory in sourceDirs:
-        #copytree(directory,backupDir,dirs_exist_ok=True)
-        subprocess.run(["cp", '-r', directory, backupDir])
+        cmd = f"cp -r {directory} {backupDir}".split(" ")
+        subprocess.run(cmd)
 
 def execBackupCmds(backupDir, backupCmds):
     """
