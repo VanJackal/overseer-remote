@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 User=overseer
-WorkingDirectory=/home/overseer/Projects/Overseer/overseer-remote
-ExecStart=/bin/gunicorn --chdir /home/overseer/Projects/Overseer/overseer-remote/ -b localhost:5000 overseerRemote:app
+WorkingDirectory=/home/overseer/run
+ExecStart=/usr/local/bin/gunicorn --chdir /home/overseer/run/ -b 0.0.0.0:5333 overseerRemote:app
 Restart=always
 
 [Install]

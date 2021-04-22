@@ -1,6 +1,6 @@
 backupCmds:
 - mongodump -o {backupDir}mongodump
 sourceDirs:
-- ~/Projects/Overseer/sampleData/
+- /home/overseer/run/config.yaml
 backupParentDir: ./Backups/
 sid: localhost
