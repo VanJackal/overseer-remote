@@ -53,3 +53,7 @@ def purge():
     data = request.get_json()
     bh.purgeOld(data['date'],ch.getBackupParent())
     return {'success':True}
+
+@app.route('/backup/parent', methods = ['GET'])
+def getParentDir():
+    return {'parentDir':ch.getBackupParent()}
