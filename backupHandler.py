@@ -72,4 +72,5 @@ def syncBackup(dest, parentDir):
     dest - string destination using format -> user@host:directory
     parentDir - backup parent directory
     """
+    print(f'syncBackup: syncing {parentDir} to {dest}')
     subprocess.run(['rsync', '-r', parentDir, dest])
